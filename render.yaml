@@ -1,9 +1,9 @@
 services:
   - type: web
-    name: mercadocore
+    name: catalog-backend
     runtime: python
     buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn mercadocore.wsgi:application"
+    startCommand: "gunicorn catalog_service.wsgi:application"
     envVars:
       - key: DJANGO_SETTINGS_MODULE
         value: catalog_service.settings
