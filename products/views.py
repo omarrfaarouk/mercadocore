@@ -1,4 +1,4 @@
-from rest_framework import generics
+from rest_framework import generics, viewsets
 from .models import Category, Product
 from .serializers import CategorySerializer, ProductSerializer
 from rest_framework.permissions import IsAuthenticated
@@ -13,5 +13,9 @@ class ProductListCreateView(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated]
 
 class ProductDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer

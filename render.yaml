@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: mercadocore
+    runtime: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn mercadocore.wsgi:application"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: catalog_service.settings
+      - key: PYTHON_VERSION
+        value: 3.11
